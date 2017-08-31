@@ -2,26 +2,19 @@
 #define GAME_FIELD
 
 #include "Field.h"
+#include "Map.h"
+
 
 class GameField : public Field
 {
 public:
 	void reloadField();
-
 	bool isTileOpen(const Vec2Tile & tile) const;
-
 	bool isPathOpen(const Vec2Tile & from, const Vec2Tile & to) const;
 
 private:
-	virtual TileResource getLayer1TileResource(const Vec2Tile & tile) const
-	{
-		return getTileAt(tile).layer1; 
-	}
-
-	virtual TileResource getLayer2TileResource(const Vec2Tile & tile) const
-	{
-		return getTileAt(tile).layer2; 
-	}
+	virtual TileResource getLayer1TileResource(const Vec2Tile & tile) const;
+	virtual TileResource getLayer2TileResource(const Vec2Tile & tile) const;
 
 private:
 	struct TileData
@@ -40,21 +33,8 @@ private:
 
 	TileData field[Field::FIELD_WIDTH][Field::FIELD_HEIGHT];
 
-	TileData & getTileAt(const Vec2Tile & tile)
-	{
-		assert(tile.x >= 0 && tile.x < Field::FIELD_WIDTH);
-		assert(tile.y >= 0 && tile.y < Field::FIELD_HEIGHT);
-
-		return field[tile.x][tile.y];
-	}
-
-	const TileData & getTileAt(const Vec2Tile & tile) const
-	{
-		assert(tile.x >= 0 && tile.x < Field::FIELD_WIDTH);
-		assert(tile.y >= 0 && tile.y < Field::FIELD_HEIGHT);
-
-		return field[tile.x][tile.y];
-	}
+	TileData & getTileAt(const Vec2Tile & tile);
+	const TileData & getTileAt(const Vec2Tile & tile) const;
 };
 
 #endif // !GAME_FIELD

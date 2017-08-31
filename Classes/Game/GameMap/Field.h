@@ -3,6 +3,7 @@
 
 #include <assert.h>
 #include <math.h>
+#include "Core/Vec2.h"
 
 /*
 	Integer version of Vec2 to describe tile positions 

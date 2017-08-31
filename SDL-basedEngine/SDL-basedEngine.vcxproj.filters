@@ -55,6 +55,12 @@
     <Filter Include="Header Files\Game\GameMap">
       <UniqueIdentifier>{bc5a4fbd-142b-424b-ac36-1884f0690983}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Entities">
+      <UniqueIdentifier>{d209084a-98a4-48b7-a72f-b0cb90fb8ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entities">
+      <UniqueIdentifier>{6b761537-f148-424e-9f0f-d873a825f07a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\src\Objects\Node.cpp">
@@ -96,14 +102,29 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Game\GameField.cpp">
-      <Filter>Source Files\Game\GameMap</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GameScene.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Game\GameMap.cpp">
+    <ClCompile Include="..\Classes\Game\GameMap\GameField.cpp">
       <Filter>Source Files\Game\GameMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameMap\GameMap.cpp">
+      <Filter>Source Files\Game\GameMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Creature.cpp">
+      <Filter>Source Files\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Fighter.cpp">
+      <Filter>Source Files\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Item.cpp">
+      <Filter>Source Files\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Ranger.cpp">
+      <Filter>Source Files\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\Entities\Warrior.cpp">
+      <Filter>Source Files\Game\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -158,17 +179,38 @@
     <ClInclude Include="..\Classes\GameScene.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\GameField.h">
+    <ClInclude Include="..\Classes\Game\GameMap\Field.h">
       <Filter>Header Files\Game\GameMap</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\Field.h">
+    <ClInclude Include="..\Classes\Game\GameMap\GameField.h">
       <Filter>Header Files\Game\GameMap</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\Map.h">
+    <ClInclude Include="..\Classes\Game\GameMap\GameMap.h">
       <Filter>Header Files\Game\GameMap</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\GameMap.h">
+    <ClInclude Include="..\Classes\Game\GameMap\Map.h">
       <Filter>Header Files\Game\GameMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Entity.h">
+      <Filter>Header Files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Creature.h">
+      <Filter>Header Files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Warrior.h">
+      <Filter>Header Files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Fighter.h">
+      <Filter>Header Files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Item.h">
+      <Filter>Header Files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Ranger.h">
+      <Filter>Header Files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\Entities\Stats.h">
+      <Filter>Header Files\Game\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

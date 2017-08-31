@@ -124,7 +124,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.\..\Classes\include;.\..\Windows\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\..\Classes\Game;.\..\Classes\include;.\..\Windows\SDL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -243,8 +243,13 @@ XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources\" /S /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\GameScene.cpp" />
-    <ClCompile Include="..\Classes\Game\GameField.cpp" />
-    <ClCompile Include="..\Classes\Game\GameMap.cpp" />
+    <ClCompile Include="..\Classes\Game\Entities\Creature.cpp" />
+    <ClCompile Include="..\Classes\Game\Entities\Fighter.cpp" />
+    <ClCompile Include="..\Classes\Game\Entities\Item.cpp" />
+    <ClCompile Include="..\Classes\Game\Entities\Ranger.cpp" />
+    <ClCompile Include="..\Classes\Game\Entities\Warrior.cpp" />
+    <ClCompile Include="..\Classes\Game\GameMap\GameField.cpp" />
+    <ClCompile Include="..\Classes\Game\GameMap\GameMap.cpp" />
     <ClCompile Include="..\Classes\src\Game.cpp" />
     <ClCompile Include="..\Classes\src\Input\EventHandler.cpp" />
     <ClCompile Include="..\Classes\src\Input\KeyboardEventHolder.cpp" />
@@ -260,10 +265,17 @@ XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources\" /S /Y
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\Game\Field.h" />
-    <ClInclude Include="..\Classes\Game\GameField.h" />
-    <ClInclude Include="..\Classes\Game\GameMap.h" />
-    <ClInclude Include="..\Classes\Game\Map.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Creature.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Entity.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Fighter.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Item.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Ranger.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Stats.h" />
+    <ClInclude Include="..\Classes\Game\Entities\Warrior.h" />
+    <ClInclude Include="..\Classes\Game\GameMap\Field.h" />
+    <ClInclude Include="..\Classes\Game\GameMap\GameField.h" />
+    <ClInclude Include="..\Classes\Game\GameMap\GameMap.h" />
+    <ClInclude Include="..\Classes\Game\GameMap\Map.h" />
     <ClInclude Include="..\Classes\include\Core\GlobalDefines.h" />
     <ClInclude Include="..\Classes\include\Core\Logger.h" />
     <ClInclude Include="..\Classes\include\Core\Vec2.h" />

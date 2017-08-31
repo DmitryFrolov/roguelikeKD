@@ -4,6 +4,9 @@ GameMap::GameMap()
 {
 	setAnchorPoint(0, 0);
 
+	layeringNode1 = Node::create();
+	layeringNode2 = Node::create();
+
 	tileResources[TileResource::TR_GROUND] = "../Resources/Sprites/Terrain/terrain1.png";
 	tileResources[TileResource::TR_ROCK] = "../Resources/Sprites/Terrain/rock1.png";
 
@@ -22,24 +25,35 @@ std::shared_ptr<GameMap> GameMap::create()
 
 void GameMap::initalize()
 {
-	layeringNode1 = Node::create(); 
 	this->addChild(layeringNode1, -1);
-
-	layeringNode2 = Node::create();
 	this->addChild(layeringNode2, 0);
 
-	GameField field;
-	field.reloadField();
-	fillFieldWithTiles(field);
+	gField = GameField();
+	gField.reloadField();
+	fillFieldWithTiles(gField);
 }
 
-void GameMap::resetField()
+GameField GameMap::getGameField()
 {
-	layeringNode1->destroyChildrenRecursive();
-	layeringNode2->destroyChildrenRecursive();
-	GameField field;
-	field.reloadField();
-	fillFieldWithTiles(field);
+	return gField;
+}
+
+void GameMap::setPosition(Vec2 position)
+{
+	setPosition(position.x, position.y);
+}
+
+void GameMap::setPosition(float _x, float _y)
+{
+	Vec2 oldPos = this->getPosition();
+	layeringNode1->moveRecursive(_x - oldPos.x, _y - oldPos.y);
+	layeringNode2->moveRecursive(_x - oldPos.x, _y - oldPos.y);
+	Node::setPosition(_x, _y);
+}
+
+Vec2 GameMap::getTileCoordinates(Vec2Tile tile)
+{
+	return Vec2(findSpriteX(tile.x), findSpriteY(tile.y));
 }
 
 float GameMap::findSpriteX(int index) const

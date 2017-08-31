@@ -12,7 +12,7 @@
 #define WINDOW_POSITION_X 200
 #define WINDOW_POSITION_Y 200
 #define WINDOW_SIZE_X 1366
-#define WINDOW_SIZE_Y 768
+#define WINDOW_SIZE_Y 800
 #define FRAME_VALUES 10
 class Game
 {

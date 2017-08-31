@@ -1,9 +1,4 @@
 #include "GameField.h"
-
-#include "GameField.h"
-
-#include "Map.h"
-
 //-------------------------------------------------------------------------------------
 
 void GameField::reloadField()
@@ -72,4 +67,30 @@ bool GameField::isPathOpen(const Vec2Tile & from, const Vec2Tile & to) const
 	}
 
 	return true;
+}
+
+TileResource GameField::getLayer1TileResource(const Vec2Tile & tile) const
+{
+	return getTileAt(tile).layer1;
+}
+
+TileResource GameField::getLayer2TileResource(const Vec2Tile & tile) const
+{
+	return getTileAt(tile).layer2;
+}
+
+GameField::TileData & GameField::getTileAt(const Vec2Tile & tile)
+{
+	assert(tile.x >= 0 && tile.x < Field::FIELD_WIDTH);
+	assert(tile.y >= 0 && tile.y < Field::FIELD_HEIGHT);
+
+	return field[tile.x][tile.y];
+}
+
+const GameField::TileData & GameField::getTileAt(const Vec2Tile & tile) const
+{
+	assert(tile.x >= 0 && tile.x < Field::FIELD_WIDTH);
+	assert(tile.y >= 0 && tile.y < Field::FIELD_HEIGHT);
+
+	return field[tile.x][tile.y];
 }
