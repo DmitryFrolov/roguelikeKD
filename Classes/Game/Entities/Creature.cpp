@@ -33,7 +33,7 @@ void Creature::hit(int enemyAttack)
 {
 	int damage = (int)enemyAttack / defense;
 	hits = hits - damage;
-	LOG("%s get $i damage\n", name, damage);
+	LOG("%s takes %i damage\n", name.c_str(), damage);
 }
 
 bool Creature::isDead() const

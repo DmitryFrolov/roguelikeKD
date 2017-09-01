@@ -20,7 +20,7 @@ public:
 		int _hits)
 		: Creature (imgPath, _spriteResource, _position, _name, _sightRadius, _experience, _defense, _attack, _hits)
 	{}
-	virtual void makeTurn(Warrior & warrior, std::shared_ptr<GameMap> gameMap); 
+	virtual void makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap);
 
 private:
 	void approachWarrior(const Vec2Tile & warriorPosition, std::shared_ptr<GameMap> gameMap);

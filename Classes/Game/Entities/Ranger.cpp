@@ -1,21 +1,22 @@
 #include "Ranger.h"
 
-void Ranger::makeTurn(Warrior & warrior, std::shared_ptr<GameMap> gameMap)
+void Ranger::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap)
 {
-	if (warrior.isDead())
+	
+	if (warrior->isDead() || this->isDead())
 		return;
 
-	const int distance = positionTile.getDistance(warrior.getTilePosition());
+	const int distance = positionTile.getDistance(warrior->getTilePosition());
 
-	if ((distance <= sightRadius) && gameMap->getGameField().isPathOpen(positionTile, warrior.getTilePosition())) // if see
+	if ((distance <= sightRadius) && gameMap->getGameField().isPathOpen(positionTile, warrior->getTilePosition())) // if see
 	{
-		LOG("Ranger saw warrior");
-		warrior.hit(getAttack());
+		LOG("%s saw and hit warrior\n", name.c_str());
+		warrior->hit(getAttack());
 		//pRenderer->animateSprite(*this, SA_ATTACK, false);
 		//pRenderer->animateSprite(warrior, SA_HIT, false);
 
-		if (warrior.isDead())
-			Keeper::getInstance().end();
+		if (warrior->isDead())
+			return;
 
 		// Based on ranger type chooshing projectile
 		//pRenderer->createProjectile(position, warrior.getPosition(), Renderer::PT_ARROW);

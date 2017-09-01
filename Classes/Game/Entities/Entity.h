@@ -5,11 +5,11 @@
 #include "Objects/Node.h"
 #include "GameMap/Field.h"
 
-enum class SpriteResource
+enum SpriteResource
 {
-	SR_VAPIRE1,
+	SR_VAMPIRE1 = 1,
 	SR_SKELETON1,
-	SR_VAPIRE2,
+	SR_VAMPIRE2,
 	SR_SKELETON2,
 
 	SR_ITEM1,

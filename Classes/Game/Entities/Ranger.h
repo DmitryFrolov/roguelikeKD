@@ -21,7 +21,7 @@ public:
 		: Creature(imgPath, _spriteResource, _position, _name, _sightRadius, _experience, _defense, _attack, _hits)
 	{ }
 
-	virtual void makeTurn(Warrior & warrior, std::shared_ptr<GameMap> gameMap);
+	virtual void makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap);
 };
 
 #endif // !RANGER

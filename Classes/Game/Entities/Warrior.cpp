@@ -42,8 +42,8 @@ void Warrior::gainExperience(int exp)
 		}
 		break;
 	}
-	LOG("warriors exp = %i", experience);
-	LOG("warriors lvl = %i", level);
+	LOG("warriors exp = %i ", experience);
+	LOG("warriors lvl = %i\n", level);
 }
 
 void Warrior::upgrade(Item item)

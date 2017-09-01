@@ -23,7 +23,7 @@ protected:
 	int hits;
 
 public:
-	virtual void makeTurn(Warrior & warrior, std::shared_ptr<GameMap> gameMap)
+	virtual void makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap)
 	{
 		/* Enemies only */ 
 	}

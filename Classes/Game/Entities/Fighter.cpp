@@ -1,33 +1,31 @@
 #include "Fighter.h"
 
-void Fighter::makeTurn(Warrior & warrior, std::shared_ptr<GameMap> gameMap)
+void Fighter::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap)
 {
-
-	if (warrior.isDead())
+	if (warrior->isDead() || this->isDead())
 		return;
 
-	const int distance = positionTile.getDistance(warrior.getTilePosition());
-	const Vec2Tile warriorPosition = warrior.getTilePosition();
+	const int distance = positionTile.getDistance(warrior->getTilePosition());
+	const Vec2Tile warriorPosition = warrior->getTilePosition();
 	const bool nearby = (distance == 1);
-	const bool canHit = (distance == 1) &&
+	const bool canHit = nearby &&
 		!((abs(warriorPosition.y - positionTile.y) == 1) && (abs(warriorPosition.x - positionTile.x) == 1));
 
 	if (distance <= sightRadius) // if see
 	{
-		LOG("Fighter saw warrior");
+		LOG("%s saw warrior ", name.c_str());
 		if (nearby)
 		{
-			LOG("Fighter nearby");
+			LOG("& nearby ");
 			if (canHit)
 			{
-				LOG("Fighter can hit");
-				warrior.hit(getAttack());
-				//renderer->animateSprite(*this, SA_ATTACK, false);
-				//renderer->animateSprite(warrior, SA_HIT, false);
+				LOG("& can hit ");
+				warrior->hit(getAttack());
+				//animateSprite(*this, SA_ATTACK, false);
+				//animateSprite(warrior, SA_HIT, false);
 
-				if (warrior.isDead())
+				if (warrior->isDead())
 				{
-					//renderer->removeSprite(warrior);
 					positionTile = warriorPosition;
 					Keeper::getInstance().end();
 				}
@@ -42,11 +40,12 @@ void Fighter::makeTurn(Warrior & warrior, std::shared_ptr<GameMap> gameMap)
 			approachWarrior(warriorPosition, gameMap);
 		}
 	}
+	LOG('\n');
 }
 
 void Fighter::approachWarrior(const Vec2Tile & warriorPosition, std::shared_ptr<GameMap> gameMap)
 {
-	LOG("Fighter trying to approach");
+	LOG("%s trying to approach\n", name.c_str());
 	Vec2Tile where = positionTile;
 
 	int deltaX = warriorPosition.x - positionTile.x;
