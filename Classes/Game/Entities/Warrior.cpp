@@ -81,3 +81,24 @@ int Warrior::getDefense() const
 {
 	return defense + defenseBoost;
 }
+
+void Warrior::initalizeAnimation()
+{
+	std::vector<SDL_Texture*> images;
+	char str[256];
+	for (int idx = 1; idx <= 5; idx++) {
+		sprintf(str, "../Resources/Sprites/BeardMan/idle%d.png", idx);
+		images.push_back(Keeper::getInstance().getTextureManager()->getTexture(str));
+	}
+	addAnimation("idle", images);
+	
+	images.clear();
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/BeardMan/attack1.png"));
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/BeardMan/attack2.png"));
+	addAnimation("attack", images);
+
+	images.clear();
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/BeardMan/onhit1.png"));
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/BeardMan/onhit2.png"));
+	addAnimation("onhit", images);
+}

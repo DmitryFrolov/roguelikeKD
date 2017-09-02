@@ -25,7 +25,6 @@ public:
 	};
 	Warrior() {}
 	Warrior(
-		const std::string imgPath,
 		const SpriteResource & _spriteResource,
 		const Vec2Tile & positionTile,
 		int _sightRadius,
@@ -33,7 +32,7 @@ public:
 		int _defense,
 		int _attack,
 		int _hits)
-		: Creature(imgPath, _spriteResource, positionTile, "Warrior", _sightRadius, _experience, _defense, _attack, _hits)
+		: Creature(_spriteResource, positionTile, "Warrior", _sightRadius, _experience, _defense, _attack, _hits)
 	{
 		assert(_hits > 0);
 
@@ -43,6 +42,7 @@ public:
 
 		attackBoost = 0;
 		defenseBoost = 0;
+		initalizeAnimation();
 	}
 	void gainExperience(int exp);
 	void upgrade(Item item);
@@ -54,6 +54,9 @@ public:
 	int getCurrentLevel() const;
 	virtual int getAttack() const;
 	virtual int getDefense() const;
+
+private: 
+	void initalizeAnimation();
 };
 
 #endif // !WARRIOR

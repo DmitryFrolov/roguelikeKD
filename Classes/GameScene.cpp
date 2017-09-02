@@ -4,8 +4,8 @@ std::shared_ptr<GameScene> GameScene::create()
 {
 	auto pRet = std::make_shared<GameScene>();
 	if (pRet)
-		if( pRet->init())
-		return pRet;
+		if(pRet->init())
+			return pRet;
 	else
 		assert(false);
 }
@@ -16,17 +16,29 @@ bool GameScene::init()
 	gMap = GameMap::create();
 	gMap->setPosition(16, 16);
 	gMap->initalize();
-	this->addChild(gMap);
 	
-	// warrior creation
-	warrior = std::make_shared<Warrior>("../Resources/Sprites/BeardMan/idle1.png", 
-		SpriteResource::SR_WARRIOR, g_warriorPos, 0, 0, 
-		WARRIOR_DEFENSE_1, WARRIOR_ATTACK_1, WARRIOR_HITS_1);
+	createWarrior();
+
+	createEnemies();
+	this->addChild(gMap, -1);
+	return true;
+}
+
+void GameScene::createWarrior()
+{
+	warrior = std::make_shared<Warrior>(
+		SpriteResource::SR_WARRIOR,
+		g_warriorPos, 0, 0, 
+		WARRIOR_DEFENSE_1,
+		WARRIOR_ATTACK_1, 
+		WARRIOR_HITS_1);
 	warrior->setPosition(gMap->getTileCoordinates(g_warriorPos));
-	gMap->addChild(warrior);
+	warrior->animateLooped("idle");
+	this->addChild(warrior);
+
 
 	KeyboardEventHolder moveWarrior = KeyboardEventHolder();
-	moveWarrior.onKeyPressed([this](SDL_KeyboardEvent *key, float dt) 
+	moveWarrior.onKeyPressed([this](SDL_KeyboardEvent *key, float dt)
 	{
 		if (warrior->isDead())
 			gameOver();
@@ -36,73 +48,64 @@ bool GameScene::init()
 
 		if (kbButton == SDLK_w || kbButton == SDLK_UP) {
 			newPos.y = newPos.y - 1;
-			OKP(newPos);
+			processWarriorsTurn(newPos);
 			enemiesTurn();
 		}
 		else if (kbButton == SDLK_a || kbButton == SDLK_LEFT) {
 			newPos.x = newPos.x - 1;
-			OKP(newPos);
+			processWarriorsTurn(newPos);
 			enemiesTurn();
 		}
 		else if (kbButton == SDLK_s || kbButton == SDLK_DOWN) {
 			newPos.y = newPos.y + 1;
-			OKP(newPos);
+			processWarriorsTurn(newPos);
 			enemiesTurn();
 		}
 		else if (kbButton == SDLK_d || kbButton == SDLK_RIGHT) {
 			newPos.x = newPos.x + 1;
-			OKP(newPos);
+			processWarriorsTurn(newPos);
 			enemiesTurn();
 		}
 
-		if (kbButton == SDLK_TAB){
+		if (kbButton == SDLK_TAB) {
 			LOG("Hits - %i\n", warrior->getCurrentHits());
 		}
 		if (warrior->isDead())
 			gameOver();
 	});
-
-	// enemies creation
-	createEnemies();
 	eventHandler.addKeyboardHolder(moveWarrior);
-	return true;
 }
 
-void GameScene::OKP(Vec2Tile targetPosition)
+void GameScene::processWarriorsTurn(Vec2Tile targetPosition)
 {
 	if (gMap->getGameField().isTileOpen(targetPosition)) {
 		if (std::shared_ptr<Creature> victim = findVictim(targetPosition)) {
-			if (!victim->isDead()) { // If victim is still alive
+			if (!victim->isDead()) { 
+				// If victim is still alive
 				victim->hit(warrior->getAttack());
-				//animateSprite(warrior, SA_ATTACK, false);
-				//animateSprite(*victim, SA_HIT, false);
+				warrior->animate("attack", "idle");
+
 				if (victim->isDead()) {
 					// If after hit victim is dead
-					//createBlood(targetPosition);
+					// createBlood(targetPosition);
 					warrior->gainExperience(victim->getExperience());
-					//removeSprite(victim);
 					warrior->moveTo(targetPosition);
 					warrior->setPosition(gMap->getTileCoordinates(targetPosition));
-					//animateSprite(warrior, SA_IDLE, false);
 					
 					//remove enemy
 					victim->removeFromParent();
-					//creatures.erase(std::find(creatures.begin(), creatures.end(), victim));
 				}
 			}
 			else {
 				warrior->moveTo(targetPosition);
 				warrior->setPosition(gMap->getTileCoordinates(targetPosition));
-				//animateSprite(warrior, SA_IDLE, false);
 			}
 		}
 		else {
 			warrior->moveTo(targetPosition);
 			warrior->setPosition(gMap->getTileCoordinates(targetPosition));
-			//animateSprite(warrior, SA_IDLE, false);
 		}
 	}
-	LOG("warrior tile position = (%i,%i) \n", targetPosition.x, targetPosition.y);
 }
 
 std::shared_ptr<Creature> GameScene::findVictim(const Vec2Tile tile)
@@ -140,7 +143,6 @@ void GameScene::createEnemies()
 			{
 				counter.fighter1Count++;
 				auto fighter1 = std::make_shared<Fighter>(
-					"../Resources/Sprites/Skeleton/idle1.png",
 					SR_SKELETON1,
 					Vec2Tile(i, j),
 					"SSkeleton" + std::to_string(counter.fighter1Count),
@@ -151,6 +153,7 @@ void GameScene::createEnemies()
 					FIGHTER1_HITS);
 				creatures.push_back(fighter1);
 				fighter1->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
+				fighter1->animateLooped("idle");
 			}
 			break;
 
@@ -158,7 +161,6 @@ void GameScene::createEnemies()
 			{
 				counter.ranger1Count++;
 				auto ranger1 = std::make_shared<Ranger>(
-					"../Resources/Sprites/Vampire/idle1.png",
 					SR_VAMPIRE1,
 					Vec2Tile(i, j), 
 					"SVampire" + std::to_string(counter.ranger1Count),
@@ -169,6 +171,7 @@ void GameScene::createEnemies()
 					RANGER1_HITS);
 				creatures.push_back(ranger1);
 				ranger1->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
+				ranger1->animateLooped("idle");
 			}
 			break;
 
@@ -176,7 +179,6 @@ void GameScene::createEnemies()
 			{
 				counter.fighter2Count++;
 				auto fighter2 = std::make_shared<Fighter>(
-					"../Resources/Sprites/Skeleton/idle1.png",
 					SR_SKELETON2,
 					Vec2Tile(i, j), 
 					"BSkeleton" + std::to_string(counter.fighter2Count),
@@ -188,6 +190,7 @@ void GameScene::createEnemies()
 				creatures.push_back(fighter2);
 				fighter2->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				fighter2->setScale(1.5);
+				fighter2->animateLooped("idle");
 			}
 			break;
 
@@ -195,7 +198,6 @@ void GameScene::createEnemies()
 			{
 				counter.ranger2Count++;
 				auto ranger2 = std::make_shared<Ranger>(
-					"../Resources/Sprites/Vampire/idle1.png",
 					SR_VAMPIRE2,
 					Vec2Tile(i, j),
 					"BVampire" + std::to_string(counter.ranger2Count),
@@ -207,6 +209,7 @@ void GameScene::createEnemies()
 				creatures.push_back(ranger2);
 				ranger2->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				ranger2->setScale(1.5);
+				ranger2->animateLooped("idle");
 			}
 			break;
 

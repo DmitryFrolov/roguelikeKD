@@ -9,9 +9,13 @@
 #include "Entities/Ranger.h"
 #include "Entities/Fighter.h"
 
+#include "Objects/AnimatedSprite.h"
+
+
 class GameScene : public Scene
 {
 private:
+	std::shared_ptr<AnimatedSprite> aSprite;
 	struct EnemiesCounter
 	{
 		int fighter1Count;
@@ -31,8 +35,10 @@ private:
 	std::vector<std::shared_ptr<Creature>> creatures;
 private:
 	virtual bool init();
-	void OKP(Vec2Tile np);
+	void createWarrior();
 	void createEnemies();
+
+	void processWarriorsTurn(Vec2Tile np);
 	void enemiesTurn();
 	std::shared_ptr<Creature> findVictim(const Vec2Tile tile);
 

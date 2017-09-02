@@ -2,7 +2,6 @@
 
 void Ranger::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap)
 {
-	
 	if (warrior->isDead() || this->isDead())
 		return;
 
@@ -12,13 +11,30 @@ void Ranger::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap>
 	{
 		LOG("%s saw and hit warrior\n", name.c_str());
 		warrior->hit(getAttack());
-		//pRenderer->animateSprite(*this, SA_ATTACK, false);
-		//pRenderer->animateSprite(warrior, SA_HIT, false);
+
+		this->animate("attack", "idle");
+		warrior->animate("onhit", "idle");
 
 		if (warrior->isDead())
 			return;
 
-		// Based on ranger type chooshing projectile
-		//pRenderer->createProjectile(position, warrior.getPosition(), Renderer::PT_ARROW);
+		// create an arrow
+		// createWhizzbang(position, warrior->getPosition(), Renderer::PT_ARROW);
 	}
+}
+
+void Ranger::initalizeAnimation()
+{
+	std::vector<SDL_Texture*> images;
+	char str[256];
+	for (int idx = 1; idx <= 5; idx++) {
+		sprintf(str, "../Resources/Sprites/Vampire/idle%d.png", idx);
+		images.push_back(Keeper::getInstance().getTextureManager()->getTexture(str));
+	}
+	addAnimation("idle", images);
+
+	images.clear();
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/Vampire/attack1.png"));
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/Vampire/attack2.png"));
+	addAnimation("attack", images);
 }

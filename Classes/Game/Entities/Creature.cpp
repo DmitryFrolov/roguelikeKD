@@ -1,7 +1,6 @@
 #include "Creature.h"
 
 Creature::Creature(
-	const std::string imgPath,
 	const SpriteResource & _spriteResource,
 	const Vec2Tile & _position,
 	const std::string & _name,
@@ -11,8 +10,7 @@ Creature::Creature(
 	int _attack,
 	int _hits)
 
-	: Sprite(imgPath)
-	, spriteResource(_spriteResource)
+	: spriteResource(_spriteResource)
 	, positionTile(_position)
 	, name(_name)
 	, sightRadius(_sightRadius)

@@ -2,14 +2,14 @@
 #define CREATURE
 
 #include <string>
-#include "Objects/Sprite.h"
+#include "Objects/AnimatedSprite.h"
 #include "GameMap/GameMap.h"
 #include "Entities/Entity.h"
 
 class Warrior;
 class GameMap;
 
-class Creature : public Entity, public Sprite
+class Creature : public Entity, public AnimatedSprite
 {
 protected:
 	SpriteResource spriteResource;
@@ -37,7 +37,6 @@ public:
 
 	virtual int getExperience() const;
 	virtual const Vec2Tile & getTilePosition() const;
-	
 
 private:
 	virtual const std::string & getName() const override;
@@ -47,7 +46,6 @@ private:
 public:
 	Creature() {}
 	Creature(
-		const std::string imgPath,
 		const SpriteResource & _spriteResource,
 		const Vec2Tile & positionTile,
 		const std::string & _name,

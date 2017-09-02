@@ -21,13 +21,13 @@ void Fighter::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap
 			{
 				LOG("& can hit ");
 				warrior->hit(getAttack());
-				//animateSprite(*this, SA_ATTACK, false);
-				//animateSprite(warrior, SA_HIT, false);
+				this->animate("attack", "idle");
+				warrior->animate("onhit", "idle");
 
 				if (warrior->isDead())
 				{
 					positionTile = warriorPosition;
-					Keeper::getInstance().end();
+					return;
 				}
 			}
 			else
@@ -70,4 +70,20 @@ void Fighter::approachWarrior(const Vec2Tile & warriorPosition, std::shared_ptr<
 		positionTile = where;
 		setPosition(gameMap->getTileCoordinates(positionTile));
 	}
+}
+
+void Fighter::initalizeAnimation()
+{
+	std::vector<SDL_Texture*> images;
+	char str[256];
+	for (int idx = 1; idx <= 5; idx++) {
+		sprintf(str, "../Resources/Sprites/Skeleton/idle%d.png", idx);
+		images.push_back(Keeper::getInstance().getTextureManager()->getTexture(str));
+	}
+	addAnimation("idle", images);
+
+	images.clear();
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/Skeleton/attack1.png"));
+	images.push_back(Keeper::getInstance().getTextureManager()->getTexture("../Resources/Sprites/Skeleton/attack2.png"));
+	addAnimation("attack", images);
 }
