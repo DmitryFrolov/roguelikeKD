@@ -4,15 +4,14 @@
 #include <string>
 #include "Objects/AnimatedSprite.h"
 #include "GameMap/GameMap.h"
-#include "Entities/Entity.h"
+#include "GameMap/Field.h"
 
 class Warrior;
 class GameMap;
 
-class Creature : public Entity, public AnimatedSprite
+class Creature : public AnimatedSprite
 {
 protected:
-	SpriteResource spriteResource;
 	Vec2Tile positionTile;
 	std::string name;
 
@@ -29,24 +28,19 @@ public:
 	}
 
 	void hit(int enemyAttack);
-	bool isDead() const; 
 	void moveTo(const Vec2Tile & where);
-	
+
+	bool isDead() const;
 	virtual int getAttack() const;
 	virtual int getDefense() const;
-
 	virtual int getExperience() const;
-	virtual const Vec2Tile & getTilePosition() const;
-
+	virtual const Vec2Tile & getTile() const;
 private:
-	virtual const std::string & getName() const override;
-	virtual SpriteResource getResource() const override;
-	virtual const Vec2Tile & getTile() const override;
+	virtual const std::string & getName() const;
 
 public:
 	Creature() {}
 	Creature(
-		const SpriteResource & _spriteResource,
 		const Vec2Tile & positionTile,
 		const std::string & _name,
 		int _sightRadius,

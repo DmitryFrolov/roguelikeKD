@@ -5,11 +5,6 @@ const std::string & Item::getName() const
 	return name;
 }
 
-SpriteResource Item::getResource() const
-{
-	return spriteResource;
-}
-
 const Vec2Tile & Item::getTile() const
 {
 	return position;
@@ -33,9 +28,4 @@ void Item::pick()
 bool Item::isPicked() const
 {
 	return picked;
-}
-
-const Vec2Tile & Item::getPosition() const
-{
-	return position;
 }

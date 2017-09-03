@@ -103,6 +103,18 @@ static int g_layer2[Field::FIELD_WIDTH * Field::FIELD_HEIGHT] =
 * 7 - item2
 */
 
+enum SpriteResource
+{
+	SR_VAMPIRE = 1,
+	SR_SKELETON, 
+	SR_BIG_VAMPIRE,
+	SR_BIG_SKELETON,
+
+	SR_ITEM1,
+	SR_ITEM2,
+	SR_ITEM3
+};
+
 static int g_entities[Field::FIELD_WIDTH * Field::FIELD_HEIGHT] =
 {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

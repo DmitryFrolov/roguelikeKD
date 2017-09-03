@@ -191,9 +191,6 @@
     <ClInclude Include="..\Classes\Game\GameMap\Map.h">
       <Filter>Header Files\Game\GameMap</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Game\Entities\Entity.h">
-      <Filter>Header Files\Game\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game\Entities\Creature.h">
       <Filter>Header Files\Game\Entities</Filter>
     </ClInclude>

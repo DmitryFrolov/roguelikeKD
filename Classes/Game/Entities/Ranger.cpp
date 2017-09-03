@@ -5,9 +5,9 @@ void Ranger::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap>
 	if (warrior->isDead() || this->isDead())
 		return;
 
-	const int distance = positionTile.getDistance(warrior->getTilePosition());
+	const int distance = positionTile.getDistance(warrior->getTile());
 
-	if ((distance <= sightRadius) && gameMap->getGameField().isPathOpen(positionTile, warrior->getTilePosition())) // if see
+	if ((distance <= sightRadius) && gameMap->getGameField().isPathOpen(positionTile, warrior->getTile())) // if see
 	{
 		LOG("%s saw and hit warrior\n", name.c_str());
 		warrior->hit(getAttack());

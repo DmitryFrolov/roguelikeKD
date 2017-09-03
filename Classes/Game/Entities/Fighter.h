@@ -9,7 +9,6 @@ class Fighter : public Creature
 {
 public:
 	Fighter(
-		const SpriteResource & _spriteResource,
 		const Vec2Tile & _position,
 		const std::string & _name,
 		int _sightRadius,
@@ -17,7 +16,7 @@ public:
 		int _defense,
 		int _attack,
 		int _hits)
-		: Creature (_spriteResource, _position, _name, _sightRadius, _experience, _defense, _attack, _hits)
+		: Creature (_position, _name, _sightRadius, _experience, _defense, _attack, _hits)
 	{
 		initalizeAnimation();
 	}

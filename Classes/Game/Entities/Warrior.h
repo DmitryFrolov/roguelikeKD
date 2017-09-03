@@ -25,14 +25,13 @@ public:
 	};
 	Warrior() {}
 	Warrior(
-		const SpriteResource & _spriteResource,
 		const Vec2Tile & positionTile,
 		int _sightRadius,
 		int _experience,
 		int _defense,
 		int _attack,
 		int _hits)
-		: Creature(_spriteResource, positionTile, "Warrior", _sightRadius, _experience, _defense, _attack, _hits)
+		: Creature(positionTile, "Warrior", _sightRadius, _experience, _defense, _attack, _hits)
 	{
 		assert(_hits > 0);
 

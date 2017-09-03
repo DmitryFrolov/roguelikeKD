@@ -5,8 +5,8 @@ void Fighter::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap
 	if (warrior->isDead() || this->isDead())
 		return;
 
-	const int distance = positionTile.getDistance(warrior->getTilePosition());
-	const Vec2Tile warriorPosition = warrior->getTilePosition();
+	const int distance = positionTile.getDistance(warrior->getTile());
+	const Vec2Tile warriorPosition = warrior->getTile();
 	const bool nearby = (distance == 1);
 	const bool canHit = nearby &&
 		!((abs(warriorPosition.y - positionTile.y) == 1) && (abs(warriorPosition.x - positionTile.x) == 1));

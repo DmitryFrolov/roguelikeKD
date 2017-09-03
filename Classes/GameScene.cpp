@@ -27,7 +27,6 @@ bool GameScene::init()
 void GameScene::createWarrior()
 {
 	warrior = std::make_shared<Warrior>(
-		SpriteResource::SR_WARRIOR,
 		g_warriorPos, 0, 0, 
 		WARRIOR_DEFENSE_1,
 		WARRIOR_ATTACK_1, 
@@ -44,7 +43,7 @@ void GameScene::createWarrior()
 			gameOver();
 
 		auto kbButton = key->keysym.sym;
-		Vec2Tile newPos = warrior->getTilePosition();
+		Vec2Tile newPos = warrior->getTile();
 
 		if (kbButton == SDLK_w || kbButton == SDLK_UP) {
 			newPos.y = newPos.y - 1;
@@ -111,7 +110,7 @@ void GameScene::processWarriorsTurn(Vec2Tile targetPosition)
 std::shared_ptr<Creature> GameScene::findVictim(const Vec2Tile tile)
 {
 	for (auto creature : creatures) {
-		if (creature->getTilePosition() == tile)
+		if (creature->getTile() == tile)
 			return creature;
 	}
 	return nullptr;
@@ -139,11 +138,10 @@ void GameScene::createEnemies()
 				// empty
 				break;
 
-			case SR_SKELETON1:
+			case SR_SKELETON:
 			{
 				counter.fighter1Count++;
 				auto fighter1 = std::make_shared<Fighter>(
-					SR_SKELETON1,
 					Vec2Tile(i, j),
 					"SSkeleton" + std::to_string(counter.fighter1Count),
 					FIGHTER1_SIGHT_RADIUS,
@@ -157,11 +155,10 @@ void GameScene::createEnemies()
 			}
 			break;
 
-			case SR_VAMPIRE1:
+			case SR_VAMPIRE:
 			{
 				counter.ranger1Count++;
 				auto ranger1 = std::make_shared<Ranger>(
-					SR_VAMPIRE1,
 					Vec2Tile(i, j), 
 					"SVampire" + std::to_string(counter.ranger1Count),
 					RANGER1_SIGHT_RADIUS,
@@ -175,11 +172,10 @@ void GameScene::createEnemies()
 			}
 			break;
 
-			case SR_SKELETON2:
+			case SR_BIG_SKELETON:
 			{
 				counter.fighter2Count++;
 				auto fighter2 = std::make_shared<Fighter>(
-					SR_SKELETON2,
 					Vec2Tile(i, j), 
 					"BSkeleton" + std::to_string(counter.fighter2Count),
 					FIGHTER2_SIGHT_RADIUS,
@@ -194,11 +190,10 @@ void GameScene::createEnemies()
 			}
 			break;
 
-			case SR_VAMPIRE2:
+			case SR_BIG_VAMPIRE:
 			{
 				counter.ranger2Count++;
 				auto ranger2 = std::make_shared<Ranger>(
-					SR_VAMPIRE2,
 					Vec2Tile(i, j),
 					"BVampire" + std::to_string(counter.ranger2Count),
 					RANGER2_SIGHT_RADIUS,
@@ -214,7 +209,7 @@ void GameScene::createEnemies()
 			break;
 
 			case SR_ITEM1:
-				//sword = Item("Sword", SR_SWORD, Vec2(i, j), SWORD_ATTACK, SWORD_DEFENSE);
+				//auto sword = std::make_shared<Item>("Sword", Vec2(i, j), SWORD_ATTACK, SWORD_DEFENSE);
 				break;
 
 			case SR_ITEM2:
@@ -231,6 +226,7 @@ void GameScene::createEnemies()
 			}
 		}
 	}
+	
 
 	for(auto creature : creatures){
 		this->addChild(creature);

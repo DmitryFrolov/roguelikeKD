@@ -266,7 +266,6 @@ XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources\" /S /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\Game\Entities\Creature.h" />
-    <ClInclude Include="..\Classes\Game\Entities\Entity.h" />
     <ClInclude Include="..\Classes\Game\Entities\Fighter.h" />
     <ClInclude Include="..\Classes\Game\Entities\Item.h" />
     <ClInclude Include="..\Classes\Game\Entities\Ranger.h" />

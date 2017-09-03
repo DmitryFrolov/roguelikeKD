@@ -1,7 +1,6 @@
 #include "Creature.h"
 
 Creature::Creature(
-	const SpriteResource & _spriteResource,
 	const Vec2Tile & _position,
 	const std::string & _name,
 	int _sightRadius,
@@ -10,8 +9,7 @@ Creature::Creature(
 	int _attack,
 	int _hits)
 
-	: spriteResource(_spriteResource)
-	, positionTile(_position)
+	: positionTile(_position)
 	, name(_name)
 	, sightRadius(_sightRadius)
 	, experience(_experience)
@@ -59,22 +57,12 @@ int Creature::getExperience() const
 	return experience;
 }
 
-const Vec2Tile & Creature::getTilePosition() const
-{
-	return positionTile;
-}
-
 const std::string & Creature::getName() const 
 {
 	return name; 
 }
 
-SpriteResource Creature::getResource() const 
-{
-	return spriteResource; 
-}
-
-const Vec2Tile & Creature::getTile() const  //TODO: rm
+const Vec2Tile & Creature::getTile() const 
 { 
 	return positionTile;
 }

@@ -2,24 +2,24 @@
 #define ITEM
 
 #include <assert.h>
+#include "Objects/Sprite.h"
 #include "Entities/Entity.h"
 #include "Entities/Stats.h"
+#include "GameMap/Field.h"
 
-class Item : public Entity
+class Item : public Sprite
 {
 private:
 	std::string name;
 	Vec2Tile position;
-	SpriteResource spriteResource;
 	bool picked;
 
 	int attack;
 	int defense;
 	
 private:
-	virtual const std::string & getName() const override;
-	virtual SpriteResource getResource() const override;
-	virtual const Vec2Tile & getTile() const override;
+	virtual const std::string & getName() const;
+	virtual const Vec2Tile & getTile() const;
 
 public:
 	int getAttack() const;
@@ -27,13 +27,11 @@ public:
 
 	void pick();
 	bool isPicked() const;
-	const Vec2Tile & getPosition() const;
 
 public:
 	Item() {}
 
 	Item(
-		const SpriteResource & _spriteResource,
 		const Vec2Tile & _position,
 		const std::string & _name,
 		int _defense,
@@ -43,7 +41,6 @@ public:
 		assert(_attack >= 0);
 		assert(_defense >= 0);
 
-		spriteResource = _spriteResource;
 		position = _position;
 		name = _name;
 
