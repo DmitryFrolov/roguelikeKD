@@ -44,7 +44,7 @@ public:
 		initalizeAnimation();
 	}
 	void gainExperience(int exp);
-	void upgrade(Item item);
+	void upgrade(std::shared_ptr<Item> item);
 
 public:
 	int getCurrentHits() const;

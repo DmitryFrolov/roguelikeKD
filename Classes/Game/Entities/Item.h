@@ -3,7 +3,6 @@
 
 #include <assert.h>
 #include "Objects/Sprite.h"
-#include "Entities/Entity.h"
 #include "Entities/Stats.h"
 #include "GameMap/Field.h"
 
@@ -19,7 +18,6 @@ private:
 	
 private:
 	virtual const std::string & getName() const;
-	virtual const Vec2Tile & getTile() const;
 
 public:
 	int getAttack() const;
@@ -27,15 +25,18 @@ public:
 
 	void pick();
 	bool isPicked() const;
+	virtual const Vec2Tile & getTile() const;
 
 public:
 	Item() {}
 
 	Item(
+		const std::string & imgPath,
 		const Vec2Tile & _position,
 		const std::string & _name,
 		int _defense,
 		int _attack)
+		: Sprite(imgPath)
 	{
 		assert(_name.size() > 0);
 		assert(_attack >= 0);

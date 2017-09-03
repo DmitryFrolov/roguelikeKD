@@ -33,7 +33,7 @@ void GameScene::createWarrior()
 		WARRIOR_HITS_1);
 	warrior->setPosition(gMap->getTileCoordinates(g_warriorPos));
 	warrior->animateLooped("idle");
-	this->addChild(warrior);
+	this->addChild(warrior, 1);
 
 
 	KeyboardEventHolder moveWarrior = KeyboardEventHolder();
@@ -65,9 +65,15 @@ void GameScene::createWarrior()
 			processWarriorsTurn(newPos);
 			enemiesTurn();
 		}
+		else if (kbButton == SDLK_SPACE) {
+			pickupItem();
+			enemiesTurn();
+		}
 
 		if (kbButton == SDLK_TAB) {
 			LOG("Hits - %i\n", warrior->getCurrentHits());
+			LOG("Attack - %i\n", warrior->getAttack());
+			LOG("Defense - %i\n", warrior->getDefense());
 		}
 		if (warrior->isDead())
 			gameOver();
@@ -86,7 +92,7 @@ void GameScene::processWarriorsTurn(Vec2Tile targetPosition)
 
 				if (victim->isDead()) {
 					// If after hit victim is dead
-					// createBlood(targetPosition);
+					createBlood(targetPosition);
 					warrior->gainExperience(victim->getExperience());
 					warrior->moveTo(targetPosition);
 					warrior->setPosition(gMap->getTileCoordinates(targetPosition));
@@ -106,6 +112,22 @@ void GameScene::processWarriorsTurn(Vec2Tile targetPosition)
 		}
 	}
 }
+
+void GameScene::pickupItem()
+{
+	auto it = std::find_if(items.begin(), items.end(), [this](std::shared_ptr<Item> item) {
+		return item->getTile() == warrior->getTile();
+	});
+
+	if (it != items.end())
+	{
+		warrior->upgrade(*it);
+		this->removeChild(*it);
+		(*it)->pick();
+		items.erase(it);
+	}
+}
+
 
 std::shared_ptr<Creature> GameScene::findVictim(const Vec2Tile tile)
 {
@@ -152,14 +174,14 @@ void GameScene::createEnemies()
 				creatures.push_back(fighter1);
 				fighter1->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				fighter1->animateLooped("idle");
+				break;
 			}
-			break;
 
 			case SR_VAMPIRE:
 			{
 				counter.ranger1Count++;
 				auto ranger1 = std::make_shared<Ranger>(
-					Vec2Tile(i, j), 
+					Vec2Tile(i, j),
 					"SVampire" + std::to_string(counter.ranger1Count),
 					RANGER1_SIGHT_RADIUS,
 					RANGER1_EXPERIENCE,
@@ -169,14 +191,14 @@ void GameScene::createEnemies()
 				creatures.push_back(ranger1);
 				ranger1->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				ranger1->animateLooped("idle");
+				break;
 			}
-			break;
 
 			case SR_BIG_SKELETON:
 			{
 				counter.fighter2Count++;
 				auto fighter2 = std::make_shared<Fighter>(
-					Vec2Tile(i, j), 
+					Vec2Tile(i, j),
 					"BSkeleton" + std::to_string(counter.fighter2Count),
 					FIGHTER2_SIGHT_RADIUS,
 					FIGHTER2_EXPERIENCE,
@@ -187,8 +209,8 @@ void GameScene::createEnemies()
 				fighter2->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				fighter2->setScale(1.5);
 				fighter2->animateLooped("idle");
+				break;
 			}
-			break;
 
 			case SR_BIG_VAMPIRE:
 			{
@@ -205,20 +227,32 @@ void GameScene::createEnemies()
 				ranger2->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				ranger2->setScale(1.5);
 				ranger2->animateLooped("idle");
+				break;
 			}
-			break;
 
 			case SR_ITEM1:
-				//auto sword = std::make_shared<Item>("Sword", Vec2(i, j), SWORD_ATTACK, SWORD_DEFENSE);
+			{
+				auto sword = std::make_shared<Item>("../Resources/Sprites/Items/sword.png", Vec2Tile(i, j), "Sword", SWORD_ATTACK, SWORD_DEFENSE);
+				sword->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
+				items.push_back(sword);
 				break;
+			}
 
 			case SR_ITEM2:
-				//shield = Item("Shield", SR_SHIELD, Vec2(i, j), SHIELD_ATTACK, SHIELD_DEFENSE);
+			{
+				auto shield = std::make_shared<Item>("../Resources/Sprites/Items/shield.png", Vec2Tile(i, j), "Shield", SHIELD_ATTACK, SHIELD_DEFENSE);
+				shield->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
+				items.push_back(shield);
 				break;
+			}
 
 			case SR_ITEM3:
-				//cuirass = Item("Cuirass", SR_CUIRASS, Vec2(i, j), CUIRASS_ATTACK, CUIRASS_DEFENSE);
+			{
+				auto helmet = std::make_shared<Item>("../Resources/Sprites/Items/helmet.png", Vec2Tile(i, j), "Cuirass", CUIRASS_ATTACK, CUIRASS_DEFENSE);
+				helmet->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
+				items.push_back(helmet);
 				break;
+			}
 
 			default:
 				assert(false);
@@ -227,10 +261,18 @@ void GameScene::createEnemies()
 		}
 	}
 	
+	for (auto creature : creatures)
+		this->addChild(creature, 1);
 
-	for(auto creature : creatures){
-		this->addChild(creature);
-	}
+	for (auto item : items)
+		this->addChild(item);
+}
+
+void GameScene::createBlood(Vec2Tile targetPosition)
+{
+	auto blood = Sprite::create("../Resources/Sprites/Items/blood.png");
+	blood->setPosition(gMap->getTileCoordinates(targetPosition));
+	this->addChild(blood);
 }
 
 void GameScene::enemiesTurn()
@@ -238,4 +280,3 @@ void GameScene::enemiesTurn()
 	for (auto enemy : creatures)
 		enemy->makeTurn(warrior, gMap);
 }
-

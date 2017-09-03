@@ -46,10 +46,10 @@ void Warrior::gainExperience(int exp)
 	LOG("warriors lvl = %i\n", level);
 }
 
-void Warrior::upgrade(Item item)
+void Warrior::upgrade(std::shared_ptr<Item> item)
 {
-		attackBoost += item.getAttack();
-		defenseBoost += item.getDefense();
+	attackBoost += item->getAttack();
+	defenseBoost += item->getDefense();
 }
 
 int Warrior::getCurrentHits() const

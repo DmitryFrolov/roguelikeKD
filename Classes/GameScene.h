@@ -15,7 +15,6 @@
 class GameScene : public Scene
 {
 private:
-	std::shared_ptr<AnimatedSprite> aSprite;
 	struct EnemiesCounter
 	{
 		int fighter1Count;
@@ -33,12 +32,14 @@ private:
 	std::shared_ptr<GameMap> gMap;
 	std::shared_ptr<Warrior> warrior;
 	std::vector<std::shared_ptr<Creature>> creatures;
+	std::vector<std::shared_ptr<Item>> items;
 private:
 	virtual bool init();
 	void createWarrior();
 	void createEnemies();
-
+	void createBlood(Vec2Tile targetPosition);
 	void processWarriorsTurn(Vec2Tile np);
+	void pickupItem();
 	void enemiesTurn();
 	std::shared_ptr<Creature> findVictim(const Vec2Tile tile);
 
