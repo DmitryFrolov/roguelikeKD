@@ -18,8 +18,11 @@ bool GameScene::init()
 	gMap->initalize();
 	
 	createWarrior();
-
 	createEnemies();
+
+	auto warriorStats = std::make_shared<CurrentStats>(warrior);
+	warriorStats->setPosition(32 * 25 + 40, 70);
+	this->addChild(warriorStats);
 	this->addChild(gMap, -1);
 	return true;
 }
@@ -70,11 +73,6 @@ void GameScene::createWarrior()
 			enemiesTurn();
 		}
 
-		if (kbButton == SDLK_TAB) {
-			LOG("Hits - %i\n", warrior->getCurrentHits());
-			LOG("Attack - %i\n", warrior->getAttack());
-			LOG("Defense - %i\n", warrior->getDefense());
-		}
 		if (warrior->isDead())
 			gameOver();
 	});
@@ -232,7 +230,7 @@ void GameScene::createEnemies()
 
 			case SR_ITEM1:
 			{
-				auto sword = std::make_shared<Item>("../Resources/Sprites/Items/sword.png", Vec2Tile(i, j), "Sword", SWORD_ATTACK, SWORD_DEFENSE);
+				auto sword = std::make_shared<Item>("../Resources/Sprites/Items/sword.png", Vec2Tile(i, j), "Sword", SWORD_DEFENSE, SWORD_ATTACK);
 				sword->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				items.push_back(sword);
 				break;
@@ -240,7 +238,7 @@ void GameScene::createEnemies()
 
 			case SR_ITEM2:
 			{
-				auto shield = std::make_shared<Item>("../Resources/Sprites/Items/shield.png", Vec2Tile(i, j), "Shield", SHIELD_ATTACK, SHIELD_DEFENSE);
+				auto shield = std::make_shared<Item>("../Resources/Sprites/Items/shield.png", Vec2Tile(i, j), "Shield", SHIELD_DEFENSE, SHIELD_ATTACK);
 				shield->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				items.push_back(shield);
 				break;
@@ -248,7 +246,7 @@ void GameScene::createEnemies()
 
 			case SR_ITEM3:
 			{
-				auto helmet = std::make_shared<Item>("../Resources/Sprites/Items/helmet.png", Vec2Tile(i, j), "Cuirass", CUIRASS_ATTACK, CUIRASS_DEFENSE);
+				auto helmet = std::make_shared<Item>("../Resources/Sprites/Items/helmet.png", Vec2Tile(i, j), "Cuirass", CUIRASS_DEFENSE, CUIRASS_ATTACK);
 				helmet->setPosition(gMap->getTileCoordinates(Vec2Tile(i, j)));
 				items.push_back(helmet);
 				break;

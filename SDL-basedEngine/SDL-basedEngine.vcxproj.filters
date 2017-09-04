@@ -61,6 +61,12 @@
     <Filter Include="Source Files\Game\Entities">
       <UniqueIdentifier>{6b761537-f148-424e-9f0f-d873a825f07a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\UI">
+      <UniqueIdentifier>{0b7e7faa-4232-4b56-a466-7dcf7b06f122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\UI">
+      <UniqueIdentifier>{6ad5abfd-6c58-4f7d-a93d-f6b5a3527600}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\src\Objects\Node.cpp">
@@ -125,6 +131,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Game\Entities\Warrior.cpp">
       <Filter>Source Files\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\UI\CurrentStats.cpp">
+      <Filter>Source Files\Game\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\Entities\Stats.h">
       <Filter>Header Files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\UI\CurrentStats.h">
+      <Filter>Header Files\Game\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

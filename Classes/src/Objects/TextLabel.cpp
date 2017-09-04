@@ -120,3 +120,8 @@ std::string TextLabel::getFontPath()
 {
 	return fontPath;
 }
+
+const Size TextLabel::getRealSize() const
+{
+	return labelRealSize;
+}

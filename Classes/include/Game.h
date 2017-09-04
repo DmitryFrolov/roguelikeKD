@@ -8,7 +8,7 @@
 #include "Managers/Keeper.h"
 #include "../GameScene.h"
 
-#define WINDOW_TITLE "SDL_Game"
+#define WINDOW_TITLE "RoguelikeKD"
 #define WINDOW_POSITION_X 200
 #define WINDOW_POSITION_Y 200
 #define WINDOW_SIZE_X 1366

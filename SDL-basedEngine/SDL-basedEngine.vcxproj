@@ -31,7 +31,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SDLGame</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>SDL-basedEngine</ProjectName>
+    <ProjectName>RoguelikeKD</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -250,6 +250,7 @@ XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources\" /S /Y
     <ClCompile Include="..\Classes\Game\Entities\Warrior.cpp" />
     <ClCompile Include="..\Classes\Game\GameMap\GameField.cpp" />
     <ClCompile Include="..\Classes\Game\GameMap\GameMap.cpp" />
+    <ClCompile Include="..\Classes\Game\UI\CurrentStats.cpp" />
     <ClCompile Include="..\Classes\src\Game.cpp" />
     <ClCompile Include="..\Classes\src\Input\EventHandler.cpp" />
     <ClCompile Include="..\Classes\src\Input\KeyboardEventHolder.cpp" />
@@ -275,6 +276,7 @@ XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources\" /S /Y
     <ClInclude Include="..\Classes\Game\GameMap\GameField.h" />
     <ClInclude Include="..\Classes\Game\GameMap\GameMap.h" />
     <ClInclude Include="..\Classes\Game\GameMap\Map.h" />
+    <ClInclude Include="..\Classes\Game\UI\CurrentStats.h" />
     <ClInclude Include="..\Classes\include\Core\GlobalDefines.h" />
     <ClInclude Include="..\Classes\include\Core\Logger.h" />
     <ClInclude Include="..\Classes\include\Core\Vec2.h" />

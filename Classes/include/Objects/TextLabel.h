@@ -35,7 +35,6 @@ protected:
 	virtual void clearSurface();
 public:
 	TextLabel(std::string _fontPath, int fsize, std::string _text);
-
 	static TextLabelPtr create(std::string _fontPath, int fsize, std::string _text);
 	virtual ~TextLabel();
 	
@@ -65,6 +64,8 @@ public:
 	 */
 	virtual void setFontPath(std::string newFontPath);
 	virtual std::string getFontPath();
+
+	virtual const Size getRealSize() const;
 };
 
 #endif __TEXT_LABEL_H__

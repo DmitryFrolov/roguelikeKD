@@ -23,6 +23,8 @@ Creature::Creature(
 	assert(defense > 0);
 	assert(sightRadius >= 0);
 	assert(experience >= 0);
+
+	setAnimFPS(15);
 }
 
 void Creature::hit(int enemyAttack)

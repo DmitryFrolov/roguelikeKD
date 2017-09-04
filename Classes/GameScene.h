@@ -4,13 +4,14 @@
 
 #include <vector>
 #include "Objects/Scene.h"
+#include "Objects/AnimatedSprite.h"
+
 #include "GameMap/GameMap.h"
+#include "UI/CurrentStats.h"
+
 #include "Entities/Warrior.h"
 #include "Entities/Ranger.h"
 #include "Entities/Fighter.h"
-
-#include "Objects/AnimatedSprite.h"
-
 
 class GameScene : public Scene
 {
