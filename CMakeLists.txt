@@ -12,12 +12,16 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -w")
 
 include_directories(${CMAKE_SOURCE_DIR}/Linux/include/SDL2)
 include_directories(${SOURCE_DIR}/include)
+include_directories(${SOURCE_DIR}/Game)
+
 link_directories(${SDL_LIBRARIES_DIR})
 
 file( GLOB HEADERS
       "${SOURCE_DIR}/include/*/*.h"
       "${SOURCE_DIR}/include/*.h"
-      "${SOURCE_DIR}/*.h")
+      "${SOURCE_DIR}/*.h"
+      "${SOURCE_DIR}/Game/*/*.h"
+      "${SOURCE_DIR}/Game/")
 
 
 file( GLOB SOURCES
@@ -25,6 +29,7 @@ file( GLOB SOURCES
 #      "${SOURCE_DIR}/src/*/*.inl"
       "${SOURCE_DIR}/src/*.cpp"
       "${SOURCE_DIR}/*.cpp"
+      "${SOURCE_DIR}/Game/*/*.cpp"
       "${SOURCE_DIR}/../SDL-basedEngine/main.cpp")
 
 find_library(SDL2	libSDL2.so		${SDL_LIBRARIES_DIR})
