@@ -135,6 +135,12 @@
     <ClCompile Include="..\Classes\Game\UI\CurrentStats.cpp">
       <Filter>Source Files\Game\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\src\Objects\Camera.cpp">
+      <Filter>Source Files\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\src\Managers\WindowManager.cpp">
+      <Filter>Source Files\Engine\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\include\Objects\Node.h">
@@ -220,6 +226,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\UI\CurrentStats.h">
       <Filter>Header Files\Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\include\Objects\Camera.h">
+      <Filter>Header Files\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\include\Managers\WindowManager.h">
+      <Filter>Header Files\Engine\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

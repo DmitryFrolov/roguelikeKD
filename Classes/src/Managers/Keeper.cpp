@@ -1,12 +1,13 @@
-#include "../../include/Managers/Keeper.h"
+#include "Managers/Keeper.h"
 
 Keeper::Keeper()
 	: renderer(nullptr)
-	, window(nullptr)
 	, framerate(0)
 {
+	winManager = new WindowManager();
 	texManager = new TextureManager();
 	sceneManager = new SceneManager();
+	camera = new Camera(winManager->getWindowSize());
 }
 
 Keeper & Keeper::getInstance()
@@ -32,15 +33,9 @@ SDL_Renderer* Keeper::getRenderer()
 	return renderer;
 }
 
-void Keeper::initWindow(SDL_Window * _window)
+WindowManager * Keeper::getWindowManager()
 {
-	assert(_window != nullptr);
-	window = _window;
-}
-
-SDL_Window * Keeper::getWindow()
-{
-	return window;
+	return winManager;
 }
 
 SceneManager * Keeper::getSceneManager()
@@ -68,7 +63,7 @@ void Keeper::drawCurrentScene()
 	sceneManager->drawCurrentScene();
 }
 
-void Keeper::updateCurrentScene( float dt)
+void Keeper::updateCurrentScene(float dt)
 {
 	sceneManager->updateCurrentScene(dt);
 }
@@ -83,13 +78,19 @@ float Keeper::getFPS()
 	return framerate;
 }
 
+Camera* Keeper::getCamera()
+{
+	return camera;
+}
+
 void Keeper::end()
 {
+	delete camera;
 	delete sceneManager;
 	delete texManager;
-	SDL_DestroyWindow(window);
+	delete winManager;
+
 	SDL_DestroyRenderer(renderer);
 	TTF_Quit();
 	SDL_Quit();
-	exit(0);
 }

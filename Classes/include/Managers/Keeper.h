@@ -7,8 +7,11 @@
 #include <SDL_render.h>
 #include <SDL_ttf.h>
 
-#include "TextureManager.h"
-#include "SceneManager.h"
+#include "Managers/TextureManager.h"
+#include "Managers/WindowManager.h"
+#include "Managers/SceneManager.h"
+
+#include "Objects/Camera.h"
 
 /*  Keeper is the main class of the game engine
 	Stores an unique entities such as TextureManager,
@@ -23,31 +26,52 @@ private:
 	Keeper(Keeper const&) = delete;		//forbid to copy and create new instances
 	Keeper& operator= (Keeper const&) = delete;
 	
+	WindowManager* winManager;
 	SDL_Renderer* renderer;
-	SDL_Window* window;
 	TextureManager* texManager;
 	SceneManager* sceneManager;
+	Camera* camera;
+
 	float  framerate;
 public:
 	static Keeper& getInstance();
+
+	/*
+	TMGR
+	*/
 	TextureManager* getTextureManager();
 
+	/*
+	Renderer
+	*/
 	void initRenderer(SDL_Renderer* _renderer);
 	SDL_Renderer* getRenderer();
 
-	void initWindow(SDL_Window* _window);
-	SDL_Window* getWindow(); 
+	/*
+	Window
+	*/
+	WindowManager* getWindowManager();
 
+	/*
+	SMGR
+	*/
 	SceneManager* getSceneManager();
-	/*replaces current scene with a passed new one*/
 	void replaceCurrentScene(std::shared_ptr<Scene> newScene);
 	void runFirstScene(std::shared_ptr<Scene> newScene);
 	EventHandler getEventHandler();
 	void drawCurrentScene();
 	void updateCurrentScene(float dt);
 
+	/*
+	FPS
+	*/
 	void setFPS(float fps);
 	float getFPS();
+
+	/*
+	Camera
+	*/
+	Camera* getCamera();
 
 	/*End engine, release memory, destroy window*/
 	void end(); 

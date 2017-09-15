@@ -8,11 +8,6 @@
 #include "Managers/Keeper.h"
 #include "../GameScene.h"
 
-#define WINDOW_TITLE "RoguelikeKD"
-#define WINDOW_POSITION_X 200
-#define WINDOW_POSITION_Y 200
-#define WINDOW_SIZE_X 1366
-#define WINDOW_SIZE_Y 800
 #define FRAME_VALUES 10
 class Game
 {
@@ -34,7 +29,6 @@ private:
 	Uint32 framecount; 	   // total frames rendered
 	float framespersecond;
 	const float targetFrameTime = 33.f; // for 60 fps
-
 };
 
 #endif //!__GAME_H__

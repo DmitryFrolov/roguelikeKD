@@ -1,4 +1,4 @@
-#include "../../include/Objects/Sprite.h"
+#include "Objects/Sprite.h"
 
 Sprite::Sprite(std::string pathToImg)
 	: path(pathToImg)
@@ -25,8 +25,10 @@ void Sprite::draw()
 	SDL_Rect texr;
 	texr.w = imageRealSize.width  * Node::getScaleX();		    //SpriteSize
 	texr.h = imageRealSize.height * Node::getScaleY();
-	texr.x = Node::getPositionX() - Node::getAnchorPoint().x * texr.w;  //SpritePosition
-	texr.y = Node::getPositionY() - Node::getAnchorPoint().y * texr.h;
+	texr.x = Node::getPositionX() - Node::getAnchorPoint().x * texr.w
+		- Keeper::getInstance().getCamera()->getPosition().x;  //SpritePosition
+	texr.y = Node::getPositionY() - Node::getAnchorPoint().y * texr.h 
+		- Keeper::getInstance().getCamera()->getPosition().y;
 
 	SDL_RenderCopyEx(Keeper::getInstance().getRenderer(), 
 			 texture2D, nullptr, &texr, Node::getRotation(),

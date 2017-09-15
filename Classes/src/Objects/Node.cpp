@@ -1,4 +1,5 @@
-#include "../../include/Objects/Node.h"
+#include "Objects/Node.h"
+#include "Managers/Keeper.h"
 
 Node::Node()
 	: position(0,0)

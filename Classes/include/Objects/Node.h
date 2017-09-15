@@ -8,8 +8,8 @@
 #include <string>
 #include <memory>
 #include <SDL.h>
-#include "../Core/GlobalDefines.h"
-#include "../Core/Vec2.h"
+#include "Core/GlobalDefines.h"
+#include "Core/Vec2.h"
 
 /*	Node is the base element of the Scene Graph. 
 	Elements of the Scene Graph must be Node objects or subclasses of it.
@@ -17,6 +17,8 @@
 	Node is drawable object
 	Node can contain other node objects (addChild)	
 */
+
+//class Camera;
 
 struct FlipState
 {

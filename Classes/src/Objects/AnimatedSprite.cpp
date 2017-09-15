@@ -1,4 +1,4 @@
-#include "../../include/Objects/AnimatedSprite.h"
+#include "Objects/AnimatedSprite.h"
 
 AnimatedSprite::AnimatedSprite()
 	: animFPS(24)
@@ -19,12 +19,12 @@ void AnimatedSprite::update(float deltaTime)
 {
 	// Update how long the current frame has been displayed
 	frameTime += deltaTime / 1000; // Convert to sec
-	// This check determines if it's time to change to the next frame.
+								   // This check determines if it's time to change to the next frame.
 	if (frameTime > (1 / animFPS))
 		// The number of frames to increment is 
 		// frameTime / (1 / animFPS) == frameTime * animFPS
 		frameNum += frameTime * animFPS;
-			
+
 	// Check if we've advanced past the last frame
 	if (frameNum >= currentAnimation.size()) {
 		if (isLooped)
