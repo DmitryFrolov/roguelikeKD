@@ -14,16 +14,21 @@ bool GameScene::init()
 {
 	// game map creation
 	gMap = GameMap::create();
-	gMap->setPosition(16, 16);
+	gMap->setPosition(16, 16); //tileSize / 2
 	gMap->initalize();
 	
 	createWarrior();
 	createEnemies();
 
 	auto warriorStats = std::make_shared<CurrentStats>(warrior);
-	warriorStats->setPosition(32 * 25 + 40, 70);
+	warriorStats->setPosition(1366 - 150, 70);
+
 	this->addChild(warriorStats);
 	this->addChild(gMap, -1);
+	
+	/*setup camera*/
+	Keeper::getInstance().getCamera()->setTargetNode(warrior);
+	Keeper::getInstance().getCamera()->setCameraBounds(0, 1366, 0, 800);
 	return true;
 }
 
