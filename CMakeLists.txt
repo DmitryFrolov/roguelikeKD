@@ -8,7 +8,7 @@ project(SDLEngine)
 set(SDL_LIBRARIES_DIR ${CMAKE_SOURCE_DIR}/Linux/libs/SDL2/)
 set(SOURCE_DIR ${CMAKE_SOURCE_DIR}/Classes/)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -w")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -w -g")
 
 include_directories(${CMAKE_SOURCE_DIR}/Linux/include/SDL2)
 include_directories(${SOURCE_DIR}/include)

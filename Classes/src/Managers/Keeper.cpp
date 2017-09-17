@@ -93,4 +93,5 @@ void Keeper::end()
 	SDL_DestroyRenderer(renderer);
 	TTF_Quit();
 	SDL_Quit();
+	exit(0);
 }

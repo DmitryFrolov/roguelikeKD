@@ -5,4 +5,18 @@
  - run
 
 ### Linux
- - CMake file placed in project root directory
+ - make sure you have installed next packages
+   ```sh
+	libsdl2-2.0-0 
+	libsdl2-image-2.0-0 
+	libsdl2-mixer-2.0-0
+	libsdl2-net-2.0-0
+	libsdl2-ttf-2.0-0
+	```
+ - build project
+   ```sh
+   $ mkdir build
+   $ cd build
+   $ cmake ..
+   $ make
+   ```
