@@ -12,13 +12,11 @@ Game::Game()
 bool Game::initSDL()
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Cant init sdl", NULL);
 		exit(1);
 	}
 
 	if(TTF_Init() < 0) {
-		SDL_Log("Unable to initialize TTF: %s", SDL_GetError());
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Cant init sdl_ttf", NULL);
 		exit(1);
 	}

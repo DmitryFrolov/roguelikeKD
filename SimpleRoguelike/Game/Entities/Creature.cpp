@@ -10,7 +10,7 @@ Creature::Creature(
 	int _hits)
 
 	: positionTile(_position)
-	, name(_name)
+	, name(_name) 
 	, sightRadius(_sightRadius)
 	, experience(_experience)
 	, defense(_defense)

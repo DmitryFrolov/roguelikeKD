@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Game">
+      <UniqueIdentifier>{38ca6eb6-75b6-4b3f-bfd3-9293e0e996b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Game\UI">
+      <UniqueIdentifier>{33816339-d507-454e-a08a-d276def15aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Game\GameMap">
+      <UniqueIdentifier>{98a26e4f-a374-48b1-ab58-6c5bc953342c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Game\Entities">
+      <UniqueIdentifier>{6e472007-a396-49c1-8eb8-31bc5fa0b2e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Game">
+      <UniqueIdentifier>{5e566e50-c28b-4672-a86b-c00909f74d55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Game\UI">
+      <UniqueIdentifier>{c6862ef2-2137-4c96-97d5-2a5860ddadf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Game\GameMap">
+      <UniqueIdentifier>{5a2a5f03-327b-43d6-bdb7-45a1eb8481f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Game\Entities">
+      <UniqueIdentifier>{3861723f-e36d-44bc-b9fb-da99f729c688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Engine">
+      <UniqueIdentifier>{b1ec84ac-7804-46dd-99ad-5a9210b275cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Engine">
+      <UniqueIdentifier>{d3cc4d88-3f5d-437d-8a1d-2958f9dd63fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Engine\Core">
+      <UniqueIdentifier>{63a038b1-3e74-4f78-bc27-cc0a94a7b054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Engine\Input">
+      <UniqueIdentifier>{4c6eaf17-26e1-49b5-b4c9-31770705066f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Engine\Managers">
+      <UniqueIdentifier>{d2ba1c4e-113e-4771-8a9b-137612993ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Engine\Objects">
+      <UniqueIdentifier>{f224a792-493e-43ee-b3f7-76d7ec8ad5e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Engine\Core">
+      <UniqueIdentifier>{6110b813-b4e2-486d-9602-feb7b2f154eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Engine\Input">
+      <UniqueIdentifier>{cdcf36c5-6e6e-4973-ae35-f9c39b2d8703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Engine\Managers">
+      <UniqueIdentifier>{5f1200d7-9a36-49f2-9ffb-b4ce454f386b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Engine\Objects">
+      <UniqueIdentifier>{966f9134-2b5e-44a4-aacf-9e3cee6feac5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game\UI\CurrentStats.h">
+      <Filter>Заголовочные файлы\Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameMap\Field.h">
+      <Filter>Заголовочные файлы\Game\GameMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameMap\GameField.h">
+      <Filter>Заголовочные файлы\Game\GameMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameMap\GameMap.h">
+      <Filter>Заголовочные файлы\Game\GameMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameMap\Map.h">
+      <Filter>Заголовочные файлы\Game\GameMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Creature.h">
+      <Filter>Заголовочные файлы\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Fighter.h">
+      <Filter>Заголовочные файлы\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Item.h">
+      <Filter>Заголовочные файлы\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Ranger.h">
+      <Filter>Заголовочные файлы\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Stats.h">
+      <Filter>Заголовочные файлы\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entities\Warrior.h">
+      <Filter>Заголовочные файлы\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Game.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Core\GlobalDefines.h">
+      <Filter>Заголовочные файлы\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Core\Logger.h">
+      <Filter>Заголовочные файлы\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Core\Vec2.h">
+      <Filter>Заголовочные файлы\Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Input\EventHandler.h">
+      <Filter>Заголовочные файлы\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Input\KeyboardEventHolder.h">
+      <Filter>Заголовочные файлы\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Input\MouseEventHolder.h">
+      <Filter>Заголовочные файлы\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Managers\Keeper.h">
+      <Filter>Заголовочные файлы\Engine\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Managers\SceneManager.h">
+      <Filter>Заголовочные файлы\Engine\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Managers\TextureManager.h">
+      <Filter>Заголовочные файлы\Engine\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Managers\WindowManager.h">
+      <Filter>Заголовочные файлы\Engine\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Objects\AnimatedSprite.h">
+      <Filter>Заголовочные файлы\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Objects\Camera.h">
+      <Filter>Заголовочные файлы\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Objects\TextLabel.h">
+      <Filter>Заголовочные файлы\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Objects\Updatable.h">
+      <Filter>Заголовочные файлы\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Objects\Node.h">
+      <Filter>Заголовочные файлы\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Objects\Scene.h">
+      <Filter>Заголовочные файлы\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDLEngine\Classes\include\Objects\Sprite.h">
+      <Filter>Заголовочные файлы\Engine\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene.h">
+      <Filter>Заголовочные файлы\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game\UI\CurrentStats.cpp">
+      <Filter>Файлы исходного кода\Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameMap\GameField.cpp">
+      <Filter>Файлы исходного кода\Game\GameMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameMap\GameMap.cpp">
+      <Filter>Файлы исходного кода\Game\GameMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Creature.cpp">
+      <Filter>Файлы исходного кода\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Fighter.cpp">
+      <Filter>Файлы исходного кода\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Item.cpp">
+      <Filter>Файлы исходного кода\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Ranger.cpp">
+      <Filter>Файлы исходного кода\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entities\Warrior.cpp">
+      <Filter>Файлы исходного кода\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Input\EventHandler.cpp">
+      <Filter>Файлы исходного кода\Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Input\KeyboardEventHolder.cpp">
+      <Filter>Файлы исходного кода\Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Input\MouseEventHolder.cpp">
+      <Filter>Файлы исходного кода\Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Managers\Keeper.cpp">
+      <Filter>Файлы исходного кода\Engine\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Managers\SceneManager.cpp">
+      <Filter>Файлы исходного кода\Engine\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Managers\TextureManager.cpp">
+      <Filter>Файлы исходного кода\Engine\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Managers\WindowManager.cpp">
+      <Filter>Файлы исходного кода\Engine\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Objects\AnimatedSprite.cpp">
+      <Filter>Файлы исходного кода\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Objects\Camera.cpp">
+      <Filter>Файлы исходного кода\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Objects\Node.cpp">
+      <Filter>Файлы исходного кода\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Objects\Scene.cpp">
+      <Filter>Файлы исходного кода\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Objects\Sprite.cpp">
+      <Filter>Файлы исходного кода\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Objects\TextLabel.cpp">
+      <Filter>Файлы исходного кода\Engine\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDLEngine\Classes\src\Game.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

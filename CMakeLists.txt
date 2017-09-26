@@ -3,34 +3,31 @@ cmake_minimum_required(VERSION 2.8)
 set(CMAKE_C_COMPILER "/usr/bin/clang")
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
-project(SDLEngine)
+project( RoguelikeKD )
 
-set(SDL_LIBRARIES_DIR ${CMAKE_SOURCE_DIR}/Linux/libs/SDL2/)
-set(SOURCE_DIR ${CMAKE_SOURCE_DIR}/Classes/)
+set(SDLENGINE_DIR ${CMAKE_SOURCE_DIR}/SDLEngine/)
+set(SDL_LIBRARIES_DIR ${SDLENGINE_DIR}/Linux/libs/SDL2/)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -w -g")
 
-include_directories(${CMAKE_SOURCE_DIR}/Linux/include/SDL2)
-include_directories(${SOURCE_DIR}/include)
-include_directories(${SOURCE_DIR}/Game)
+include_directories(${SDLENGINE_DIR}/Linux/include/SDL2)
+include_directories(${SDLENGINE_DIR}/Classes/include)
+include_directories(${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game)
 
 link_directories(${SDL_LIBRARIES_DIR})
 
 file( GLOB HEADERS
-      "${SOURCE_DIR}/include/*/*.h"
-      "${SOURCE_DIR}/include/*.h"
-      "${SOURCE_DIR}/*.h"
-      "${SOURCE_DIR}/Game/*/*.h"
-      "${SOURCE_DIR}/Game/")
-
+      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*/*.h"
+      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*.h"
+      "${SDLENGINE_DIR}/Classes/include/*/*.h"
+      "${SDLENGINE_DIR}/Classes/include/*.h")
 
 file( GLOB SOURCES
-      "${SOURCE_DIR}/src/*/*.cpp"
-#      "${SOURCE_DIR}/src/*/*.inl"
-      "${SOURCE_DIR}/src/*.cpp"
-      "${SOURCE_DIR}/*.cpp"
-      "${SOURCE_DIR}/Game/*/*.cpp"
-      "${SOURCE_DIR}/../SDL-basedEngine/main.cpp")
+      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*/*.cpp"
+      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*.cpp"
+      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/main.cpp"
+      "${SDLENGINE_DIR}/Classes/src/*/*.cpp"
+      "${SDLENGINE_DIR}/Classes/src/*.cpp")
 
 find_library(SDL2	libSDL2.so		${SDL_LIBRARIES_DIR})
 find_library(SDL2_IMAGE	libSDL2_image.so	${SDL_LIBRARIES_DIR})

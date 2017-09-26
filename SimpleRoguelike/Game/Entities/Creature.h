@@ -14,7 +14,7 @@ class Creature : public AnimatedSprite
 protected:
 	Vec2Tile positionTile;
 	std::string name;
-
+ 
 	int sightRadius;
 	int experience;
 	int defense;
