@@ -38,19 +38,14 @@ Vec2 CurrentStats::getLabelPosition(int labelIdx)
 
 void CurrentStats::setPosition(float _x, float _y)
 {
-	this->setPosition(Vec2(_x, _y));
-}
-
-void CurrentStats::setPosition(Vec2 position)
-{
-	Node::setPosition(position);
-	updateLabelsPosition(position);
+	Node::setPosition(Vec2(_x, _y));
+	updateLabelsPosition(Vec2(_x, _y));
 }
 
 void CurrentStats::removeChild(NodePtr child)
 {
 	Node::removeChild(child);
-	Updatable::removeChild(child);
+	Updatable::_removeChild(child);
 }
 
 void CurrentStats::update(float dt)
@@ -62,18 +57,18 @@ void CurrentStats::update(float dt)
 	labels["defenseLabel"]->setString("Defense: " + std::to_string(warrior->getDefense()));
 }
 
-void CurrentStats::setParent(NodePtr _parent)
+void CurrentStats::_setParent(NodePtr _parent)
 {
 	this->addChild(labels["levelLabel"]);
 	this->addChild(labels["expirienceLabel"]);
 	this->addChild(labels["hitsLabel"]);
 	this->addChild(labels["attackLabel"]);
 	this->addChild(labels["defenseLabel"]);
-	Node::setParent(_parent);
+	Node::_setParent(_parent);
 }
 
-void CurrentStats::insertChild(NodePtr child)
+void CurrentStats::_insertChild(NodePtr child)
 {
-	Node::insertChild(child, 0, "");
-	Updatable::insertChild(child);
+	Node::_insertChild(child, 0, "");
+	Updatable::_insertChild(child);
 }

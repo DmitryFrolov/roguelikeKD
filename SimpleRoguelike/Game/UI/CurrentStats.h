@@ -30,12 +30,12 @@ private:
 	virtual void updateLabelsPosition(Vec2 thisPos);
 	virtual Vec2 getLabelPosition(int labelIdx);
 private:
-	virtual void setParent(NodePtr _parent) override;
-	virtual void insertChild(NodePtr child) override;
+	virtual void _setParent(NodePtr _parent) override;
+	virtual void _insertChild(NodePtr child) override;
 
 public:
 	virtual void setPosition(float _x, float _y) override;
-	virtual void setPosition(Vec2 position) override;
+	//virtual void setPosition(Vec2 position) override;
 	virtual void removeChild(NodePtr child) override;
 	virtual void update(float dt) override;
 };
