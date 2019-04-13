@@ -81,7 +81,7 @@ void GameScene::createWarrior()
 		if (warrior->isDead())
 			gameOver();
 	});
-	eventHandler.addKeyboardHolder(moveWarrior);
+	m_eventHandler.addKeyboardHolder(moveWarrior);
 }
 
 void GameScene::processWarriorsTurn(Vec2Tile targetPosition)

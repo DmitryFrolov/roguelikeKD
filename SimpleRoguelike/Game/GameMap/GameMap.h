@@ -20,7 +20,7 @@ public:
 	void initalize();
 	void fillFieldWithTiles(const Field & field);
 	GameField getGameField();
-	virtual void setPosition(Vec2 position) override;
+	//virtual void setPosition(Vec2& position) override;
 	virtual void setPosition(float _x, float _y) override;
 	Vec2 getTileCoordinates(Vec2Tile tile);
 private:

@@ -38,10 +38,10 @@ GameField GameMap::getGameField()
 	return gField;
 }
 
-void GameMap::setPosition(Vec2 position)
-{
-	setPosition(position.x, position.y);
-}
+//void GameMap::setPosition(Vec2& position)
+//{
+//	setPosition(position.x, position.y);
+//}
 
 void GameMap::setPosition(float _x, float _y)
 {

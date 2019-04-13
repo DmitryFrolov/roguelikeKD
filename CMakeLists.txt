@@ -5,51 +5,66 @@ set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
 project( RoguelikeKD )
 
-set(SDLENGINE_DIR ${CMAKE_SOURCE_DIR}/SDLEngine/)
-set(SDL_LIBRARIES_DIR ${SDLENGINE_DIR}/Linux/libs/SDL2/)
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/)
+set(SDLENGINE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDLEngine/)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin/)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -w -g")
 
-include_directories(${SDLENGINE_DIR}/Linux/include/SDL2)
-include_directories(${SDLENGINE_DIR}/Classes/include)
-include_directories(${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game)
+add_subdirectory(SDLEngine)
 
-link_directories(${SDL_LIBRARIES_DIR})
+set(ROGUELIKE_SOURCES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SimpleRoguelike/Game)
 
-file( GLOB HEADERS
-      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*/*.h"
-      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*.h"
-      "${SDLENGINE_DIR}/Classes/include/*/*.h"
-      "${SDLENGINE_DIR}/Classes/include/*.h")
+set(ROGUELIKE_HEADERS
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Creature.h
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Fighter.h
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Item.h
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Ranger.h
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Stats.h
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Warrior.h
 
-file( GLOB SOURCES
-      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*/*.cpp"
-      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/Game/*.cpp"
-      "${CMAKE_SOURCE_DIR}/SimpleRoguelike/main.cpp"
-      "${SDLENGINE_DIR}/Classes/src/*/*.cpp"
-      "${SDLENGINE_DIR}/Classes/src/*.cpp")
+    ${ROGUELIKE_SOURCES_DIR}/GameMap/Field.h
+    ${ROGUELIKE_SOURCES_DIR}/GameMap/GameField.h
+    ${ROGUELIKE_SOURCES_DIR}/GameMap/Map.h
+    ${ROGUELIKE_SOURCES_DIR}/GameMap/GameMap.h
 
-find_library(SDL2	libSDL2.so		${SDL_LIBRARIES_DIR})
-find_library(SDL2_IMAGE	libSDL2_image.so	${SDL_LIBRARIES_DIR})
-find_library(SDL2_MIXER	libSDL2_mixer.so	${SDL_LIBRARIES_DIR})
-find_library(SDL2_NET	libSDL2_net.so		${SDL_LIBRARIES_DIR})
-find_library(SDL2_TTF	libSDL2_ttf.so	 	${SDL_LIBRARIES_DIR})
+    ${ROGUELIKE_SOURCES_DIR}/UI/CurrentStats.h
+    
+    ${ROGUELIKE_SOURCES_DIR}/GameScene.h
+)
 
-message("\nChecking libraries...")
-message(STATUS "	      sdl2: " ${SDL2})
-message(STATUS "      sdl_image: " ${SDL2_IMAGE})
-message(STATUS "      sdl_mixer: " ${SDL2_MIXER})
-message(STATUS "        sdl_net: " ${SDL2_NET})
-message(STATUS "        sdl_ttf: " ${SDL2_TTF})
-message("")
+set(ROUGUELIKE_SOURCES
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Creature.cpp
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Fighter.cpp
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Item.cpp
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Ranger.cpp
+    ${ROGUELIKE_SOURCES_DIR}/Entities/Warrior.cpp
 
-add_executable(run ${SOURCES} ${HEADERS})
+    ${ROGUELIKE_SOURCES_DIR}/GameMap/GameField.cpp
+    ${ROGUELIKE_SOURCES_DIR}/GameMap/GameMap.cpp
 
-target_link_libraries(run
-		${SDL2}
-		${SDL2_IMAGE}
-		${SDL2_MIXER}
-		${SDL2_NET}
-		${SDL2_TTF})
-	
-file(COPY ${CMAKE_SOURCE_DIR}/Resources  DESTINATION ${CMAKE_SOURCE_DIR}/bin/)
+    ${ROGUELIKE_SOURCES_DIR}/UI/CurrentStats.cpp
+    
+    ${ROGUELIKE_SOURCES_DIR}/GameScene.cpp
+
+    ${ROGUELIKE_SOURCES_DIR}/../main.cpp
+)
+
+add_executable(${PROJECT_NAME} ${ROUGUELIKE_SOURCES} ${ROGUELIKE_HEADERS})
+
+target_include_directories(${PROJECT_NAME}
+    PUBLIC ${SDLENGINE_DIR}/Source/public
+    PUBLIC ${SDL2_INCLUDE_DIR_P}
+    PUBLIC ${ROGUELIKE_SOURCES_DIR}
+)
+
+target_link_libraries(${PROJECT_NAME} 
+        PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/SDLEngine/libKDEngine.so
+		PUBLIC ${SDL2_LIB}
+		PUBLIC ${SDL2_IMAGE_LIB}
+		PUBLIC ${SDL2_MIXER_LIB}
+		PUBLIC ${SDL2_NET_LIB}
+		PUBLIC ${SDL2_TTF_LIB}
+        )
+
+add_dependencies(${PROJECT_NAME} KDEngine)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Resources DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/bin/)

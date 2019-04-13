@@ -1,0 +1,3 @@
+[submodule "SDLEngine"]
+	path = SDLEngine
+	url = https://github.com/DmitryFrolov/SDLEngine.git
