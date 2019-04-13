@@ -1,3 +1,6 @@
+# About
+Simple 2d roguelike game developed as demo for SDLEngine library.
+
 # Setup project
 ### Windows
  - Open RoguelikeGame.sln
@@ -5,18 +8,11 @@
  - run
 
 ### Linux
- - make sure you have installed next packages
-   ```sh
-	libsdl2-2.0-0 
-	libsdl2-image-2.0-0 
-	libsdl2-mixer-2.0-0
-	libsdl2-net-2.0-0
-	libsdl2-ttf-2.0-0
-	```
- - build project
+ Build project
    ```sh
    $ mkdir build
    $ cd build
    $ cmake ..
    $ make
    ```
+Executable file and game resources will be placed in the same directory as whole project in ./bin/ directory
