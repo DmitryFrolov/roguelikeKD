@@ -15,4 +15,13 @@ Simple 2d roguelike game developed as demo for SDLEngine library.
    $ cmake ..
    $ make
    ```
-Executable file and game resources will be placed in the same directory as whole project in ./bin/ directory
+Executable file and game resources will be placed in bin/ directory
+
+### Windows
+ Build project
+   ```sh
+   $ mkdir build
+   $ cd build
+   $ cmake -G "Visual Studio 15 2017" ../
+   ```
+Visual Studio Project files will be generated after running this command. Open. Build. Run.
