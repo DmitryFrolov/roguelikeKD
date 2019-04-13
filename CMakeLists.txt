@@ -6,7 +6,6 @@ set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 project( RoguelikeKD )
 
 set(SDLENGINE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDLEngine/)
-#set(SDL_LIBRARIES_DIR ${SDLENGINE_DIR}/Linux/libs/SDL2/)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin/)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -w -g")
 
@@ -53,18 +52,19 @@ add_executable(${PROJECT_NAME} ${ROUGUELIKE_SOURCES} ${ROGUELIKE_HEADERS})
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC ${SDLENGINE_DIR}/Source/public
-    PUBLIC ${SDL2_INCLUDE_DIR}
+    PUBLIC ${SDL2_INCLUDE_DIR_P}
     PUBLIC ${ROGUELIKE_SOURCES_DIR}
 )
 
-message(" SDL2_INCLUDE_DIR: "${SDL2_INCLUDE_DIR})
-
 target_link_libraries(${PROJECT_NAME} 
-                      ${CMAKE_CURRENT_BINARY_DIR}/SDLEngine/libKDEngine.so
-                      ${SDL2_LIB_OUT}
-                      ${SDL2_IMAGE_LIB_OUT}
-                      ${SDL2_MIXER_LIB_OUT}
-                      ${SDL2_NET_LIB_OUT}
-                      ${SDL2_TTF_LIB_OUT})
+        PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/SDLEngine/libKDEngine.so
+		PUBLIC ${SDL2_LIB}
+		PUBLIC ${SDL2_IMAGE_LIB}
+		PUBLIC ${SDL2_MIXER_LIB}
+		PUBLIC ${SDL2_NET_LIB}
+		PUBLIC ${SDL2_TTF_LIB}
+        )
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Resources  DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/bin/)
+add_dependencies(${PROJECT_NAME} KDEngine)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Resources DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/bin/)
