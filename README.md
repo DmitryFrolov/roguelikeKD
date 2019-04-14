@@ -1,4 +1,7 @@
 # About
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5b5e294f070e4a97a5e4e1b5e059d5c1)](https://app.codacy.com/app/DmitryFrolov/roguelikeKD?utm_source=github.com&utm_medium=referral&utm_content=DmitryFrolov/roguelikeKD&utm_campaign=Badge_Grade_Dashboard)
+
 Simple 2d roguelike game developed as demo for SDLEngine library.
 
 # Setup project
