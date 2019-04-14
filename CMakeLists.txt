@@ -36,7 +36,7 @@ set(ROGUELIKE_HEADERS
     ${ROGUELIKE_SOURCES_DIR}/GameMap/GameMap.h
 
     ${ROGUELIKE_SOURCES_DIR}/UI/CurrentStats.h
-    
+
     ${ROGUELIKE_SOURCES_DIR}/GameScene.h
 )
 
@@ -51,7 +51,7 @@ set(ROUGUELIKE_SOURCES
     ${ROGUELIKE_SOURCES_DIR}/GameMap/GameMap.cpp
 
     ${ROGUELIKE_SOURCES_DIR}/UI/CurrentStats.cpp
-    
+
     ${ROGUELIKE_SOURCES_DIR}/GameScene.cpp
 
     ${ROGUELIKE_SOURCES_DIR}/../main.cpp
@@ -69,7 +69,7 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC ${ROGUELIKE_SOURCES_DIR}
 )
 
-target_link_libraries(${PROJECT_NAME} 
+target_link_libraries(${PROJECT_NAME}
         PUBLIC KDEngine
 		PUBLIC ${SDL2_LIB}
 		PUBLIC ${SDL2_IMAGE_LIB}
@@ -80,7 +80,17 @@ target_link_libraries(${PROJECT_NAME}
 
 add_dependencies(${PROJECT_NAME} KDEngine)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Resources DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+# there is the difference in resource path because in visual studio projects actual runtime output directory
+# not ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} but ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/{Debug/Release}
+# so this if branches are created to averride this behavior
+message(WARNING "Get rid of this Resources hack!")
+# as a possible solution we may define a macro with path to Resources/ directory in cmake and pass it to the executable
+
+if(WIN32)
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Resources DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+else()
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Resources DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/..)
+endif(WIN32)
 
 if(WIN32)
 	file(COPY ${SDL2_LIBRARIES_DIR_P}/ DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Debug)
