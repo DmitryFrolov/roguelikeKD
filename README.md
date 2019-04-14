@@ -4,12 +4,7 @@
 
 Simple 2d roguelike game developed as demo for SDLEngine library.
 
-# Setup project
-### Windows
- - Open RoguelikeGame.sln
- - set active configuration to Debug & x86
- - run
-
+## Setup project
 ### Linux
  Build project
    ```sh
