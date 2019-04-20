@@ -29,7 +29,7 @@ Vec2 CurrentStats::getLabelPosition(int labelIdx)
 	float resY, indent = FONT_SIZE;
 	int center = labels.size() / 2;
 	resY = this->getPositionY() - indent * ((float)center - labelIdx);
-	
+
 	if (labels.size() % 2 != 0)
 		return Vec2(this->getPositionX(), resY);
 	else
@@ -40,12 +40,6 @@ void CurrentStats::setPosition(float _x, float _y)
 {
 	Node::setPosition(Vec2(_x, _y));
 	updateLabelsPosition(Vec2(_x, _y));
-}
-
-void CurrentStats::removeChild(NodePtr child)
-{
-	Node::removeChild(child);
-	Updatable::_removeChild(child);
 }
 
 void CurrentStats::update(float dt)
@@ -65,10 +59,4 @@ void CurrentStats::_setParent(NodePtr _parent)
 	this->addChild(labels["attackLabel"]);
 	this->addChild(labels["defenseLabel"]);
 	Node::_setParent(_parent);
-}
-
-void CurrentStats::_insertChild(NodePtr child)
-{
-	Node::_insertChild(child, 0, "");
-	Updatable::_insertChild(child);
 }
