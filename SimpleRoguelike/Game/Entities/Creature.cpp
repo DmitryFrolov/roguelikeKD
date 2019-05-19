@@ -1,3 +1,4 @@
+#include <Core/GlobalDefines.h>
 #include "Creature.h"
 
 Creature::Creature(
@@ -10,7 +11,7 @@ Creature::Creature(
 	int _hits)
 
 	: positionTile(_position)
-	, name(_name) 
+	, name(_name)
 	, sightRadius(_sightRadius)
 	, experience(_experience)
 	, defense(_defense)
@@ -36,7 +37,7 @@ void Creature::hit(int enemyAttack)
 
 bool Creature::isDead() const
 {
-	return hits <= 0; 
+	return hits <= 0;
 }
 
 void Creature::moveTo(const Vec2Tile & moveTo)
@@ -59,12 +60,12 @@ int Creature::getExperience() const
 	return experience;
 }
 
-const std::string & Creature::getName() const 
+const std::string & Creature::getName() const
 {
-	return name; 
+	return name;
 }
 
-const Vec2Tile & Creature::getTile() const 
-{ 
+const Vec2Tile & Creature::getTile() const
+{
 	return positionTile;
 }

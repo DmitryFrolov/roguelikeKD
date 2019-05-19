@@ -2,16 +2,15 @@
 
 #include <unordered_map>
 #include "Objects/Node.h"
-#include "Objects/Updatable.h"
 #include "Objects/TextLabel.h"
 #include "Entities/Warrior.h"
 
 #define FONT_PATH "../Resources/Fonts/Kurale.ttf"
 #define FONT_SIZE 24
 
-class CurrentStats : public Node, public Updatable
+class CurrentStats : public Node
 {
-private: 
+private:
 	std::shared_ptr<Warrior> warrior;
 
 /*	std::shared_ptr<TextLabel> levelLabel;
@@ -26,17 +25,14 @@ public:
 	CurrentStats(std::shared_ptr<Warrior> _warrior);
 	virtual ~CurrentStats() {}
 
-private: 
+private:
 	virtual void updateLabelsPosition(Vec2 thisPos);
 	virtual Vec2 getLabelPosition(int labelIdx);
 private:
 	virtual void _setParent(NodePtr _parent) override;
-	virtual void _insertChild(NodePtr child) override;
 
 public:
 	virtual void setPosition(float _x, float _y) override;
-	//virtual void setPosition(Vec2 position) override;
-	virtual void removeChild(NodePtr child) override;
 	virtual void update(float dt) override;
 };
 

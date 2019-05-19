@@ -3,8 +3,9 @@
 
 int main(int argc, char** argv)
 {
-	Game* game = new Game();
+	Keeper::applySettings(EngineSettings("config.json"));
+	Game game = Game();
 	Keeper::getInstance().runFirstScene(GameScene::create());
-	game->run(); 
+	game.run();
 	return 0;
 }

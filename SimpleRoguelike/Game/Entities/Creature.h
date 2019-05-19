@@ -14,7 +14,7 @@ class Creature : public AnimatedSprite
 protected:
 	Vec2Tile positionTile;
 	std::string name;
- 
+
 	int sightRadius;
 	int experience;
 	int defense;
@@ -24,7 +24,7 @@ protected:
 public:
 	virtual void makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap)
 	{
-		/* Enemies only */ 
+		/* Enemies only */
 	}
 
 	void hit(int enemyAttack);
@@ -45,7 +45,7 @@ public:
 		const std::string & _name,
 		int _sightRadius,
 		int _experience,
-		int _defense, 
+		int _defense,
 		int _attack,
 		int _hits);
 

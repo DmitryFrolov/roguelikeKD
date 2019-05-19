@@ -1,3 +1,6 @@
+#include <Core/GlobalDefines.h>
+#include <Managers/Keeper.h>
+
 #include "Ranger.h"
 
 void Ranger::makeTurn(std::shared_ptr<Warrior> warrior, std::shared_ptr<GameMap> gameMap)

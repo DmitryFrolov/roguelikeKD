@@ -1,3 +1,6 @@
+#include <Core/GlobalDefines.h>
+#include <Managers/Keeper.h>
+
 #include "Warrior.h"
 
 void Warrior::gainExperience(int exp)
